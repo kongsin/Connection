@@ -45,8 +45,8 @@ public class MainActivity extends ActionBarActivity {
 
     public static final String USER_NAME = "USERNAME";
 
-    String username;
-    String password;
+    private String username ="";
+    private String password ="";
 
 
     @Override
@@ -69,8 +69,15 @@ public class MainActivity extends ActionBarActivity {
                 username = editTextUserName.getText().toString();
                 password = editTextPassword.getText().toString();
 
+                if (username.length() <= 0) {
+                    editTextUserName.setError("กรุณากรอกชื่อผู้ใช้");
+                    return;
+                }
+                if (password.length() <= 0) {
+                    editTextPassword.setError("กรุณากรอกรหัสผ่าน");
+                    return;
+                }
                 login(username, password);
-
             }
 
             private void login(final String username, String password) {
